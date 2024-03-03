@@ -1,0 +1,16 @@
+{
+  "name": "musk-and-tusk-11ty",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf _site && npx @11ty/eleventy",
+    "serve": "npx @11ty/eleventy --serve"
+  },
+  "keywords": [],
+  "author": "",
+  "private": "true",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

@@ -1,0 +1,73 @@
+<!-- footer section start -->
+<div class="footer_section layout_padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <div class="location_icon">
+          <ul>
+            <li>
+              <a
+                href="https://www.google.com/maps/place/Musk+%26+Tusk/@12.8895757,80.1431624,15z/data=!4m5!3m4!1s0x0:0x59b5a17760a12a6b!8m2!3d12.8895757!4d80.1431624?hl=en"
+                ><img src="/images/map-icon.png"
+              /></a>
+            </li>
+            <li>
+              <a href="tel:+917854447100"
+                ><img src="/images/call-icon.png"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="social_icon">
+          <ul>
+            <li>
+              <a href="https://www.facebook.com/profile.php?id=100088638174420"
+                ><img src="/images/fb-icon.png"
+              /></a>
+            </li>
+            <li>
+              <a href="https://twitter.com/MuskAndTusk"
+                ><img src="/images/twitter-icon.png"
+              /></a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/muskandtusk_kaspapuram/"
+                ><img src="/images/instagram-icon.png"
+              /></a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=tPCcV2st8fs"
+                ><img src="/images/youtub-icon.png"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer_section_2">
+      <div class="row">
+        <div class="col-lg-3 col-md-6">
+          <h3 class="company_text">Services</h3>
+          <p class="dolor_text">
+            Hair Service, Colors, Hair SPA, Head Massage, Facial, Manicure and
+            Pedicure, PreBridgeGroom
+          </p>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h3 class="company_text">Branches</h3>
+          {% for branch in branches %}
+          <p class="dolor_text">{{branch.name}}</p>
+          {% endfor %}
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h3 class="company_text">Company</h3>
+          <p class="dolor_text">Contact US</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- footer section end -->

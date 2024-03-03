@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include "partials/head.html" %}
+  <link rel="stylesheet" href="/page-css/branches.css" />
+  <body>
+    {% include "partials/header.html" %}
+    <!-- banner section start -->
+    <!-- content start -->
+    <div class="container">
+      {% for branch in branches %}
+      <div class="branch">
+        <div class="row">
+          <div class="col-md-6">
+            <h1>{{branch.name}}</h1>
+            <div class="address address1">{{branch.address1}}</div>
+            <div class="address address2">{{branch.address2}}</div>
+            <div class="address address3">
+              {{branch.city}}, {{branch.state}}, {{branch.pinCode}},
+              {{branch.country}}
+            </div>
+            {% if branch.phone %}
+            <div class="phone">Phone: {{branch.phone}}</div>
+            {% endif %}
+            <div class="plusCode">{{branch.plusCode}}</div>
+          </div>
+          <div class="col-md-6">
+            <div class="map map-responsive">
+              <iframe
+                src="https://www.google.com/maps/embed?pb={{branch.googleMapEmbedCode}}"
+                width="450"
+                height="250"
+                frameborder="0"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- content end -->
+    {% include "partials/footer.html" %} {% include "partials/copyright.html" %}
+    {% include "partials/page-scripts.html" %}
+  </body>
+</html>
