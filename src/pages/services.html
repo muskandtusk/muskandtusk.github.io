@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include "partials/head.html" %}
+
+  <body>
+    {% include "partials/header.html" %}
+    <!-- product section start -->
+    <div class="product_section layout_padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="product_taital">Our Services</h1>
+            <p class="product_text" style="font-size: 25px">
+              Transform yourself into a work of art at our salon - where our
+              team of expert stylists and beauty professionals will enhance your
+              natural beauty and leave you feeling confident, refreshed, and
+              ready to take on the world!
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">{% include "partials/services.html" %}</div>
+        </div>
+      </div>
+    </div>
+    <!-- product section start -->
+    {% include "partials/footer.html" %} {% include "partials/copyright.html" %}
+    {% include "partials/page-scripts.html" %}
+  </body>
+</html>

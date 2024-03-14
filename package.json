@@ -1,13 +1,19 @@
 {
-  "name": "MuskAndTuskSalon.com",
+  "name": "muskandausksalon.com",
   "version": "1.0.0",
-  "description": "",
+  "description": "MuskAndTuskSalon.com",
   "main": "index.js",
   "scripts": {
     "build": "rm -rf _site && npx @11ty/eleventy",
     "serve": "npx @11ty/eleventy --serve"
   },
-  "keywords": [],
+  "keywords": [
+    "Musk & Tusk",
+    "Musk And Tusk",
+    "Musk & Tusk Salon",
+    "Musk And Tusk Salon",
+    "MuskAndTuskSalon.com"
+  ],
   "author": "",
   "private": "true",
   "devDependencies": {
