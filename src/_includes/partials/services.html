@@ -1,0 +1,14 @@
+<div class="owl-carousel owl-theme">
+  {% for service in services %}
+  <div class="item">
+    <div class="image_main">
+      <img src="/images-services/{{service.imageSrc}}" alt="image" />
+    </div>
+    <h6 class="price_text">
+      {{service.name}}<br /><span style="color: #f75261"
+        >{{service.price}}</span
+      >
+    </h6>
+  </div>
+  {% endfor %}
+</div>
