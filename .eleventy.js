@@ -9,6 +9,7 @@ module.exports = function (eleventyConfig) {
     "js",
     "page-css",
     "images-services",
+    "images-team",
   ];
 
   // Copy assets
