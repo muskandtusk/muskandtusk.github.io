@@ -4,8 +4,7 @@
 
 ### Website
 
-* [MuskAndTuskSalon.com](https://MuskAndTuskSalon.com)
-
+- [MuskAndTusk.com](https://MuskAndTusk.com)
 
 ### One-time setup on local
 
