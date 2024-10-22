@@ -5,6 +5,7 @@
 ### Website
 
 - [MuskAndTusk.com](https://MuskAndTusk.com)
+- [MuskAndTuskSalon.com](https://MuskAndTuskSalon.com)
 
 ### One-time setup on local
 
