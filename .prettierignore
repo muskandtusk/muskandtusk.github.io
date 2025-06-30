@@ -1,6 +1,0 @@
-# Main site - generated files
-site
-
-# Make sure other folders are ignored
-**/.git
-**/node_modules
