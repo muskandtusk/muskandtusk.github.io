@@ -3394,6 +3394,7 @@ h4 {
     z-index: 10;
     display: none;
     height: 100vh;
+    pointer-events: none;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
@@ -4864,7 +4865,7 @@ gmpx-store-locator {
     transition: transform 0.3s ease;
     text-align: -webkit-center;
     min-width: 280px;
-    max-width: 350px;
+    max-width: 700px;
 }
 
 .franchise-icon {
@@ -5106,7 +5107,6 @@ gmpx-store-locator {
 
 .gold-button:hover {
     background: linear-gradient(45deg, #f8d031, #ffcc00);
-    transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
 
@@ -5182,5 +5182,72 @@ gmpx-store-locator {
     .nav-button {
         font-size: 1.5rem;
         padding: 8px 16px;
+    }
+}
+
+/* Musk and Tusk Card */
+
+.franchise-image-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    padding: 20px;
+    gap: 20px;
+}
+
+
+.franchise-flip-container {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 200px;
+    min-width: 120px;
+    cursor: pointer;
+}
+
+.franchise-flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.franchise-flip-container:hover .franchise-flipper {
+    transform: rotateY(180deg);
+}
+
+.franchise-front, .franchise-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    /*border: 3px solid gold;*/
+    /*box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);*/
+    overflow: hidden;
+}
+
+.franchise-front img, .franchise-back img {
+    width: 100%;
+    height: 100%;
+}
+
+.franchise-back {
+    transform: rotateY(180deg);
+}
+
+@media (max-width: 768px) {
+    .franchise-flip-container {
+        width: 45%;
+        height: 10%;
+    }
+}
+
+@media (max-width: 480px) {
+    .franchise-flip-container {
+        width: 90%;
     }
 }
