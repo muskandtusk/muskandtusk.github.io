@@ -5251,3 +5251,89 @@ gmpx-store-locator {
         width: 90%;
     }
 }
+
+/* Franchise Enquiry Form */
+.franchise-enquiry-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.franchise-enquiry-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+/* Modal Form */
+.franchise-enquiry-enquiry-form {
+    background: #222;
+    padding: 20px;
+    border: 2px solid gold;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    transform: scale(0.9);
+    transition: transform 0.4s ease;
+}
+
+.franchise-enquiry-overlay.show .franchise-enquiry-enquiry-form {
+    transform: scale(1);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+}
+
+button {
+    padding: 10px 20px;
+    background: gold;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: black;
+    color: gold;
+    border: 1px solid gold;
+}
+
+.franchise-enquiry-success-message {
+    background: #0a0;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    animation: fadeIn 0.5s ease;
+}
+
+.franchise-enquiry-close-btn {
+    margin-top: 15px;
+    background: #444;
+    color: #fff;
+}
+
+.franchise-enquiry-error {
+    color: #f55;
+    margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+}

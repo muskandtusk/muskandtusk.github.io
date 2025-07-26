@@ -255,6 +255,7 @@
     <div class="sub-header ondark" style="font-family: Cinzel Decorative,serif">Franchise Details</div>
     <h1 class="heading ondark centre">Beginning Of Your Boss Story</h1>
     <p class="hero-paragraph center ondark" style="text-align: center">Are you ready to be part of a dynamic, profitable, and exceptionally rewarding venture? Discover why MUSK & TUSK is the ultimate opportunity for aspiring entrepreneurs and seasoned investors alike.</p>
+    <button class="gold-button" onclick="openForm()">Franchise Enquiry</button>
     <h2 style="color: white">Enquiry: +91 9994574613, +91 9942871426</h2>
 <div class="franchise-image-row">
         <div class="franchise-flip-container">
@@ -311,6 +312,24 @@
                 </div>
             </div>
         </div>
+</div>
+
+<!-- Franchise Enquiry Form -->
+<div id="franchise-enquiry-overlay" class="franchise-enquiry-overlay">
+    <div class="franchise-enquiry-enquiry-form" id="franchise-enquiry-formContainer">
+        <div id="franchise-enquiry-formContent">
+            <div id="franchise-enquiry-error" class="franchise-enquiry-error"></div>
+            <p class="hero-paragraph ondark"> Franchise Enquiry Form</p>
+            <input type="text" id="name" placeholder="Your Name *">
+            <input type="tel" id="phone" placeholder="Phone Number *">
+            <input type="email" id="email" placeholder="Email ID">
+            <input type="text" id="location" placeholder="Preferred Location">
+            <textarea id="message" placeholder="Message to Franchise" rows="4"></textarea>
+
+            <button onclick="submitForm()">Submit</button>
+            <button class="franchise-enquiry-close-btn" onclick="closeForm()">Close</button>
+        </div>
+    </div>
 </div>
 
 <div class="franchise_overlay" id="franchise_overlay" onclick="closeFranchiseSidebar()"></div>
@@ -930,6 +949,62 @@
             if (e.key === 'ArrowRight') gallery_nextSlide();
             if (e.key === 'ArrowLeft') gallery_prevSlide();
         });
+    </script>
+
+    <script>
+        function openForm() {
+            const overlay = document.getElementById('franchise-enquiry-overlay');
+            overlay.classList.add('show');
+        }
+
+        function closeForm() {
+            const overlay = document.getElementById('franchise-enquiry-overlay');
+            overlay.classList.remove('show');
+        }
+
+        async function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const location = document.getElementById('location').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const errorBox = document.getElementById('franchise-enquiry-error');
+
+            errorBox.textContent = '';
+
+            if (!name || !phone) {
+                errorBox.textContent = "Please fill in required fields: Name and Phone Number.";
+                return;
+            }
+
+            const payload = {
+                ...(name && { name }),
+                ...(phone && { phone }),
+                ...(email && { email }),
+                ...(location && { location }),
+                ...(message && { message })
+            };
+
+            try {
+                const res = await fetch("https://9u89u735p0.execute-api.us-west-2.amazonaws.com/franchise-enquiry", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                if (res.status === 200) {
+                    document.getElementById('franchise-enquiry-formContainer').innerHTML = `
+          <div class="franchise-enquiry-success-message">
+            <p>Thank you! Your enquiry has been submitted successfully.</p>
+            <button class="franchise-enquiry-close-btn" onclick="closeForm()">Close</button>
+          </div>`;
+                } else {
+                    errorBox.textContent = "Something went wrong. Please try again later.";
+                }
+            } catch (e) {
+                errorBox.textContent = "Network error. Please check your connection.";
+            }
+        }
     </script>
 <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 </body>
