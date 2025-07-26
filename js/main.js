@@ -11588,7 +11588,7 @@ Webflow.require('ix2').init({
                             "target": {
                                 "id": "5d2f4589a298443cebdc42af|7e185542-5e80-813f-faba-47493ddb7e3b"
                             },
-                            "heightValue": 300,
+                            "heightValue": 100,
                             "widthUnit": "PX",
                             "heightUnit": "PX"
                         }
@@ -11617,8 +11617,8 @@ Webflow.require('ix2').init({
                             "target": {
                                 "id": "5d2f4589a298443cebdc42af|7e185542-5e80-813f-faba-47493ddb7e3e"
                             },
-                            "xValue": 1,
-                            "yValue": 1,
+                            "xValue": 0.4,
+                            "yValue": 0.4,
                             "locked": true
                         }
                     }, {
@@ -12166,8 +12166,8 @@ Webflow.require('ix2').init({
                         "target": {
                             "id": "5d2f4589a298443cebdc42af|7e185542-5e80-813f-faba-47493ddb7e3e"
                         },
-                        "xValue": 1,
-                        "yValue": 1,
+                        "xValue": 0.4,
+                        "yValue": 0.4,
                         "locked": true
                     }
                 }, {
