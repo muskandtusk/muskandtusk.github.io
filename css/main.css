@@ -3786,6 +3786,18 @@ html.w-mod-js [data-ix=fade-up-3] {
         height: 220px
     }
 
+    .nav-container {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .brand {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 10px auto;
+    }
+
     .nav-menu {
         bottom: -4px
     }
@@ -3938,8 +3950,7 @@ html.w-mod-js [data-ix=fade-up-3] {
         margin-left: 0
     }
 
-    .menu-mobile,
-    .page-loader {
+    .menu-mobile {
         display: none
     }
 
@@ -3963,8 +3974,7 @@ html.w-mod-js [data-ix=fade-up-3] {
         flex-wrap: wrap
     }
 
-    .icon,
-    .menu-button {
+    .icon {
         display: none
     }
 
@@ -4274,7 +4284,40 @@ html.w-mod-js [data-ix=fade-up-3] {
     }
 
     .navbar {
-        height: 110px
+        height: 110px;
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+    .nav-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .brand {
+        margin: 5px auto;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100%;
+        order: -1;
+    }
+
+    .logo-on-dark {
+        height: 80px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-link {
+        font-size: 14px;
+        padding: 5px;
     }
 
     .logo-on-cream {
@@ -4626,6 +4669,18 @@ gmpx-store-locator {
     padding: 10px;
 }
 
+@media (max-width: 768px) {
+    .label {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .label {
+        font-size: 18px;
+    }
+}
+
 .services-circle:hover .label {
     opacity: 1;
 }
@@ -4645,6 +4700,7 @@ gmpx-store-locator {
     flex-direction: column;
     padding: 2rem;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 
 .services-modal img {
@@ -4653,6 +4709,62 @@ gmpx-store-locator {
     border: 5px solid #d4af37;
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+}
+
+@media (max-width: 768px) {
+    .services-modal {
+        padding: 1rem;
+    }
+
+    .services-modal img {
+        max-width: 85%;
+        max-height: 50%;
+        border-width: 3px;
+    }
+
+    .services-modal h2 {
+        font-size: 24px;
+        margin: 10px 0;
+    }
+
+    .services-modal p {
+        font-size: 16px;
+        line-height: 1.4;
+        margin: 10px 0;
+    }
+
+    .close-btn, .nav-btn {
+        font-size: 24px;
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-modal {
+        padding: 0.5rem;
+    }
+
+    .services-modal img {
+        max-width: 90%;
+        max-height: 40%;
+        border-width: 2px;
+    }
+
+    .services-modal h2 {
+        font-size: 20px;
+        margin: 8px 0;
+    }
+
+    .services-modal p {
+        font-size: 14px;
+        line-height: 1.3;
+        margin: 8px 0;
+    }
+
+    .close-btn, .nav-btn {
+        font-size: 20px;
+        padding: 3px 8px;
+    }
 }
 
 .gallery-modal {
@@ -4818,6 +4930,8 @@ gmpx-store-locator {
     transition: right 0.4s ease;
     z-index: 1000;
     border-left: 3px solid #FFD700;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .franchise_sidebar.open {
@@ -4836,18 +4950,24 @@ gmpx-store-locator {
     font-size: 28px;
     float: right;
     cursor: pointer;
+    position: sticky;
+    top: 10px;
+    z-index: 10;
 }
 
 .franchise_sidebar_content {
     /*margin-top: 60px;*/
     font-size: calc(12px + 1vw);
     line-height: 1.6;
+    text-align: left;
+    padding: 10px;
 }
 
 .franchise_sidebar_title {
     font-size: calc(24px + 1vw);
-    line-height: 8vw;
+    line-height: 1.4;
     color: #FFD700;
+    margin-bottom: 20px;
 }
 
 /* Franchise Pop up*/
@@ -4916,7 +5036,7 @@ gmpx-store-locator {
 /* Image caurosel */
 .carousel {
     position: relative;
-    /*height: 100vh;*/
+    height: 100vh;
     overflow: hidden;
 }
 .carousel-slide {
@@ -5059,34 +5179,124 @@ gmpx-store-locator {
 }
 
 @media screen and (max-width: 768px) {
-    .carousel-text {
-        position: relative;
-        /*padding: 5%;*/
-        text-align: center;
-        font-size: 4vw;
-        line-height: 1.4em;
+    /* Carousel container - keep full viewport height */
+    .carousel {
+        height: 100vh !important;
         width: 100%;
-        background: rgba(0, 0, 0, 0.5); /* optional for better readability */
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Carousel slides - must maintain absolute positioning for transitions */
+    .carousel-slide {
+        position: absolute !important;
+        width: 100%;
+        height: 100% !important;
+        top: 0;
+        left: 0;
+    }
+
+    /* Carousel images - must fill entire slide */
+    .carousel-slide img {
+        width: 100%;
+        height: 100% !important;
+        object-fit: cover !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    /* Brand name overlay - top center */
+    .carousel-caption-fixed-brand-name {
+        font-size: 1.8rem !important;
+        padding: 12px 20px !important;
+        top: 12% !important;
+        width: auto;
+        max-width: 85%;
+        left: 50% !important;
+        transform: translate(-50%, 0) !important;
+        white-space: nowrap;
+    }
+
+    /* Tag line overlay - below brand name */
+    .carousel-caption-fixed-tag-line {
+        font-size: 0.9rem !important;
+        padding: 4px 8px !important;
+        top: 19% !important;
+        width: auto;
+        max-width: 70%;
+        left: 50% !important;
+        transform: translate(-50%, 0) !important;
+    }
+
+    /* Fixed caption text */
+    .carousel-caption-fixed {
+        font-size: 1.1rem !important;
+        padding: 12px 18px !important;
+        width: 85%;
+        max-width: 85%;
+        white-space: normal;
+        line-height: 1.4 !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    /* Main carousel text content - positioned at bottom */
+    .carousel-text {
+        position: absolute !important;
+        bottom: 5% !important;
+        left: 50% !important;
+        top: auto !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: 90% !important;
+        max-width: 90% !important;
+        padding: 15px !important;
+        background: rgba(0, 0, 0, 0.85) !important;
+        border-radius: 12px;
+        text-align: center !important;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        z-index: 10 !important;
+    }
+
+    /* Left-aligned text variant */
+    .carousel-text-left {
+        left: 50% !important;
+        right: auto !important;
+        text-align: center !important;
+    }
+
+    /* Carousel text headings */
+    .carousel-text h1 {
+        font-size: 22px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 8px !important;
+        margin-top: 0 !important;
     }
 
     .carousel-text h2 {
-        font-size: 10vw;
-        line-height: 1.3em;
+        font-size: 18px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 8px !important;
+        margin-top: 0 !important;
     }
 
-    .carousel {
-        top: 10%;
-    }
-
+    /* Carousel text paragraphs */
     .carousel-text p {
-        font-size: 6vw;
-        line-height: 1.5em;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        padding: 8px !important;
+        margin: 8px 0 !important;
     }
 
-    .carousel-slide img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
+    /* Gold buttons in carousel */
+    .gold-button {
+        padding: 10px 18px !important;
+        font-size: 13px !important;
+        margin: 8px auto !important;
+        display: inline-block !important;
     }
 }
 
@@ -5113,8 +5323,10 @@ gmpx-store-locator {
 /* Carousel */
 .gallery-carousel {
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 80vh;
+    max-height: 800px;
+    overflow: hidden;
 }
 
 .gallery-slides {
@@ -5124,9 +5336,12 @@ gmpx-store-locator {
 }
 
 .gallery-slide {
-    min-width: 100vw;
-    height: 100vh;
+    min-width: 100%;
+    height: 100%;
     padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gallery-slide img {
@@ -5183,6 +5398,26 @@ gmpx-store-locator {
         font-size: 1.5rem;
         padding: 8px 16px;
     }
+
+    .gallery-carousel {
+        height: 60vh;
+    }
+
+    .gallery-slide {
+        padding: 5px;
+    }
+
+    .gallery-slide img {
+        border-width: 4px;
+    }
+
+    .nav-left {
+        left: 5px;
+    }
+
+    .nav-right {
+        right: 5px;
+    }
 }
 
 /* Musk and Tusk Card */
@@ -5204,19 +5439,25 @@ gmpx-store-locator {
     width: 100%;
     max-width: 200px;
     min-width: 120px;
+    height: 280px;
     cursor: pointer;
+    -webkit-tap-highlight-color: rgba(255, 215, 0, 0.3);
 }
 
 .franchise-flipper {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
+    transition: transform 0.6s, box-shadow 0.3s;
     transform-style: preserve-3d;
 }
 
 .franchise-flip-container:hover .franchise-flipper {
     transform: rotateY(180deg);
+}
+
+.franchise-flip-container:active .franchise-flipper {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
 }
 
 .franchise-front, .franchise-back {
@@ -5225,14 +5466,14 @@ gmpx-store-locator {
     height: 100%;
     backface-visibility: hidden;
     border-radius: 10px;
-    /*border: 3px solid gold;*/
-    /*box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);*/
     overflow: hidden;
 }
 
 .franchise-front img, .franchise-back img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .franchise-back {
@@ -5242,13 +5483,42 @@ gmpx-store-locator {
 @media (max-width: 768px) {
     .franchise-flip-container {
         width: 45%;
-        height: 10%;
+        height: 250px;
+        margin-bottom: 20px;
+    }
+
+    .franchise-image-row {
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 15px 10px;
+        gap: 15px;
+    }
+
+    /* Enable tap to flip on mobile */
+    .franchise-flip-container {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .franchise-front img, .franchise-back img {
+        object-fit: contain;
     }
 }
 
 @media (max-width: 480px) {
     .franchise-flip-container {
-        width: 90%;
+        width: 85%;
+        height: 220px;
+        margin-bottom: 20px;
+    }
+
+    .franchise-image-row {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 10px;
+        gap: 15px;
     }
 }
 
@@ -5336,4 +5606,764 @@ button:hover {
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
     to   { opacity: 1; transform: scale(1); }
+}
+
+/* ===== COMPREHENSIVE MOBILE RESPONSIVENESS FIXES ===== */
+
+/* Prevent horizontal overflow on all devices */
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* Mobile: Tablets and below (max-width: 991px) */
+@media screen and (max-width: 991px) {
+    .hero-section, .navbar {
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .body-left, .body-right {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .section {
+        padding: 40px 0;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Ensure logo centers properly */
+    .nav-container {
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .brand {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 10px auto !important;
+    }
+
+    .logo-on-dark {
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* Ensure mobile menu button shows */
+    .menu-button, .w-nav-button {
+        display: block !important;
+    }
+
+    /* Ensure page loader works */
+    .page-loader {
+        display: block !important;
+    }
+}
+
+/* Mobile: Phones and small tablets (max-width: 767px) */
+@media screen and (max-width: 767px) {
+    /* Typography */
+    h1 {
+        font-size: 32px !important;
+        line-height: 1.2 !important;
+    }
+
+    h2 {
+        font-size: 24px !important;
+        line-height: 1.3 !important;
+    }
+
+    .heading {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+    }
+
+    .sub-header {
+        font-size: 18px !important;
+    }
+
+    .hero-paragraph {
+        font-size: 16px !important;
+        line-height: 1.5 !important;
+    }
+
+    .paragraph {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Carousel fixes for 767px */
+    .carousel {
+        height: 100vh !important;
+    }
+
+    .carousel-slide {
+        position: absolute !important;
+        height: 100% !important;
+    }
+
+    .carousel-slide img {
+        position: absolute;
+        width: 100%;
+        height: 100% !important;
+        object-fit: cover !important;
+        animation: none; /* Disable animation on mobile for performance */
+    }
+
+    .carousel-text {
+        position: absolute !important;
+        bottom: 3% !important;
+        left: 50% !important;
+        top: auto !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: 92% !important;
+        max-width: 92% !important;
+        padding: 12px !important;
+        background: rgba(0, 0, 0, 0.85) !important;
+        border-radius: 10px;
+        text-align: center !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        z-index: 10 !important;
+    }
+
+    .carousel-text-left {
+        left: 50% !important;
+        right: auto !important;
+        text-align: center !important;
+    }
+
+    .carousel-text h1 {
+        font-size: 20px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 6px !important;
+        margin-top: 0 !important;
+    }
+
+    .carousel-text h2 {
+        font-size: 17px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 6px !important;
+        margin-top: 0 !important;
+    }
+
+    .carousel-text p {
+        font-size: 12px !important;
+        line-height: 1.5 !important;
+        padding: 6px !important;
+        margin: 6px 0 !important;
+    }
+
+    .carousel-caption-fixed-brand-name {
+        font-size: 1.6rem !important;
+        padding: 10px 18px !important;
+        top: 11% !important;
+        max-width: 80%;
+        left: 50%;
+        transform: translate(-50%, 0) !important;
+    }
+
+    .carousel-caption-fixed-tag-line {
+        font-size: 0.85rem !important;
+        padding: 3px 6px !important;
+        top: 18% !important;
+        max-width: 65%;
+    }
+
+    .carousel-caption-fixed {
+        font-size: 1rem !important;
+        padding: 10px 15px !important;
+        max-width: 82%;
+        white-space: normal;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    .gold-button {
+        padding: 9px 18px !important;
+        font-size: 13px !important;
+        margin: 8px auto !important;
+        display: inline-block !important;
+    }
+
+    /* Navigation */
+    .navbar {
+        padding-right: 3%;
+        padding-left: 3%;
+    }
+
+    .nav-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .brand {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    .logo-on-dark {
+        height: 100px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* Ensure mobile menu button shows */
+    .menu-button, .w-nav-button {
+        display: block !important;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    /* Sections */
+    .section {
+        padding: 30px 15px !important;
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .body-left, .body-right, .body-center {
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+    }
+
+    /* Services */
+    .circle-container {
+        gap: 1rem;
+        padding: 10px;
+    }
+
+    .services-circle {
+        width: 140px !important;
+        height: 140px !important;
+    }
+
+    .services-modal h2 {
+        font-size: 20px !important;
+        margin: 10px 0 !important;
+    }
+
+    .services-modal p {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+        padding: 0 10px !important;
+    }
+
+    /* Gallery */
+    .gallery-carousel {
+        height: 50vh !important;
+        max-height: 400px;
+    }
+
+    .nav-button {
+        font-size: 1.2rem !important;
+        padding: 5px 10px !important;
+    }
+
+    .nav-left {
+        left: 5px !important;
+    }
+
+    .nav-right {
+        right: 5px !important;
+    }
+
+    /* Franchise */
+    .franchise-image-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        padding: 15px 10px;
+    }
+
+    .franchise-flip-container {
+        width: 45%;
+        height: 240px;
+        margin-bottom: 20px;
+    }
+
+    .franchise_sidebar {
+        width: 90vw;
+        max-width: 90vw;
+        padding: 20px 15px;
+    }
+
+    .franchise_sidebar_title {
+        font-size: 22px;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+
+    .franchise_sidebar_content {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .franchise-icon-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .franchise-icon-block {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .franchise-popup img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Team/Creators */
+    .team-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-member-wrapper {
+        width: 80%;
+        margin-bottom: 30px;
+    }
+
+    .team-image {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Contact */
+    .contact-container {
+        flex-direction: column;
+    }
+
+    ._50 {
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+
+    /* Monogram wrapper */
+    .monogram-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .monogram-wrapper img {
+        max-width: 200px;
+        height: auto;
+    }
+
+    /* Footer */
+    .footer-content-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-left-content,
+    .footer-right-content {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+/* Mobile: Small phones (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    /* Typography */
+    h1 {
+        font-size: 24px !important;
+        line-height: 1.2 !important;
+    }
+
+    h2 {
+        font-size: 20px !important;
+        line-height: 1.3 !important;
+    }
+
+    .heading {
+        font-size: 22px !important;
+        line-height: 1.3 !important;
+    }
+
+    .sub-header {
+        font-size: 16px !important;
+    }
+
+    .hero-paragraph {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+    }
+
+    .paragraph {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Carousel for small phones */
+    .carousel {
+        height: 100vh !important;
+    }
+
+    .carousel-slide {
+        position: absolute !important;
+        height: 100% !important;
+    }
+
+    .carousel-slide img {
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .carousel-text {
+        bottom: 2% !important;
+        width: 95% !important;
+        max-width: 95% !important;
+        padding: 10px !important;
+        font-size: 11px !important;
+        background: rgba(0, 0, 0, 0.9) !important;
+    }
+
+    .carousel-text h1 {
+        font-size: 18px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .carousel-text h2 {
+        font-size: 16px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .carousel-text p {
+        font-size: 11px !important;
+        padding: 5px !important;
+        margin: 5px 0 !important;
+    }
+
+    .carousel-caption-fixed-brand-name {
+        font-size: 1.3rem !important;
+        padding: 8px 14px !important;
+        max-width: 88%;
+        top: 10% !important;
+    }
+
+    .carousel-caption-fixed-tag-line {
+        font-size: 0.7rem !important;
+        padding: 2px 5px !important;
+        max-width: 75%;
+        top: 16% !important;
+    }
+
+    .carousel-caption-fixed {
+        font-size: 0.9rem !important;
+        padding: 8px 12px !important;
+        max-width: 88%;
+        line-height: 1.3 !important;
+    }
+
+    .gold-button {
+        padding: 8px 15px !important;
+        font-size: 12px !important;
+    }
+
+    /* Services */
+    .services-circle {
+        width: 110px !important;
+        height: 110px !important;
+    }
+
+    .circle-container {
+        gap: 0.5rem;
+    }
+
+    .label {
+        font-size: 14px !important;
+    }
+
+    /* Navigation */
+    .navbar {
+        padding-right: 2%;
+        padding-left: 2%;
+    }
+
+    .nav-container {
+        justify-content: center;
+    }
+
+    .brand {
+        width: 100%;
+        display: flex !important;
+        justify-content: center !important;
+        margin: 8px auto;
+    }
+
+    .logo-on-dark {
+        max-width: 120px;
+        height: 70px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* Ensure mobile menu button shows */
+    .menu-button, .w-nav-button {
+        display: block !important;
+        cursor: pointer;
+    }
+
+    /* Sections */
+    .section {
+        padding: 20px 10px !important;
+    }
+
+    .services_spacer {
+        margin-bottom: 20px;
+    }
+
+    /* Gallery */
+    .gallery-carousel {
+        height: 40vh !important;
+    }
+
+    .nav-button {
+        font-size: 1rem !important;
+        padding: 4px 8px !important;
+    }
+
+    /* Shop locator */
+    .body-right.map {
+        height: 350px !important;
+    }
+
+    /* Franchise */
+    .franchise-image-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .franchise-flip-container {
+        width: 80% !important;
+        height: 200px;
+    }
+
+    .franchise_sidebar {
+        width: 95vw;
+        max-width: 95vw;
+        padding: 15px 10px;
+    }
+
+    .franchise_sidebar_title {
+        font-size: 20px;
+        line-height: 1.3;
+    }
+
+    .franchise_sidebar_content {
+        font-size: 14px;
+    }
+
+    .team-member-wrapper {
+        width: 100%;
+    }
+}
+
+/* Landscape orientation fixes for mobile */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+    .carousel {
+        height: 100vh !important;
+    }
+
+    .carousel-slide {
+        height: 100vh !important;
+        position: absolute !important;
+    }
+
+    .carousel-slide img {
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .carousel-text {
+        bottom: 2% !important;
+        padding: 8px !important;
+        font-size: 11px !important;
+        max-height: 40vh;
+        overflow-y: auto;
+    }
+
+    .carousel-text h1,
+    .carousel-text h2 {
+        font-size: 14px !important;
+        margin: 3px 0 !important;
+    }
+
+    .carousel-text p {
+        font-size: 10px !important;
+        line-height: 1.3 !important;
+        margin: 3px 0 !important;
+    }
+
+    .carousel-caption-fixed-brand-name {
+        top: 8% !important;
+        font-size: 1.1rem !important;
+        padding: 6px 12px !important;
+    }
+
+    .carousel-caption-fixed-tag-line {
+        top: 14% !important;
+        font-size: 0.65rem !important;
+    }
+
+    .gold-button {
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Services - disable hover, enable tap */
+    .services-circle:hover {
+        transform: scale(1);
+    }
+
+    .services-circle:active {
+        transform: scale(0.95);
+    }
+
+    /* Franchise cards - disable hover */
+    .franchise-flip-container:hover .franchise-flipper {
+        transform: none;
+    }
+
+    /* Enable tap-to-flip for franchise cards */
+    .franchise-flipper.flipped {
+        transform: rotateY(180deg);
+    }
+}
+
+/* Fix for very small screens */
+@media screen and (max-width: 360px) {
+    /* Carousel */
+    .carousel {
+        height: 100vh !important;
+    }
+
+    .carousel-slide {
+        height: 100% !important;
+    }
+
+    .carousel-slide img {
+        height: 100% !important;
+    }
+
+    .carousel-text {
+        bottom: 1% !important;
+        width: 96% !important;
+        padding: 8px !important;
+        font-size: 10px !important;
+    }
+
+    .carousel-text h1 {
+        font-size: 16px !important;
+    }
+
+    .carousel-text h2 {
+        font-size: 14px !important;
+    }
+
+    .carousel-text p {
+        font-size: 10px !important;
+        line-height: 1.4 !important;
+    }
+
+    .carousel-caption-fixed-brand-name {
+        font-size: 1.1rem !important;
+        padding: 6px 10px !important;
+        max-width: 90%;
+    }
+
+    .carousel-caption-fixed-tag-line {
+        font-size: 0.6rem !important;
+        padding: 2px 4px !important;
+        max-width: 80%;
+    }
+
+    .carousel-caption-fixed {
+        font-size: 0.8rem !important;
+        padding: 6px 10px !important;
+        max-width: 90%;
+    }
+
+    .gold-button {
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+    }
+
+    /* Franchise cards */
+    .franchise-flip-container {
+        width: 75% !important;
+        height: 180px;
+    }
+
+    .franchise_sidebar {
+        width: 98vw;
+        max-width: 98vw;
+    }
+
+    .franchise_sidebar_title {
+        font-size: 18px;
+    }
+
+    .franchise_sidebar_content {
+        font-size: 13px;
+    }
+
+    /* Services */
+    .services-circle {
+        width: 90px !important;
+        height: 90px !important;
+    }
+
+    /* Navigation */
+    .brand {
+        width: 100%;
+        justify-content: center !important;
+    }
+
+    .logo-on-dark {
+        max-width: 100px;
+        height: 60px;
+    }
+
+    .nav-button {
+        padding: 3px 6px !important;
+        font-size: 0.9rem !important;
+    }
 }
