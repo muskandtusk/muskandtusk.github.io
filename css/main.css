@@ -5161,10 +5161,21 @@ gmpx-store-locator {
     left: 5%;
 }
 
+.carousel-text h1 {
+    font-size: 3vw;
+    margin: 0 0 3%;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ffd700, #ffed4e, #ff9800);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 8px rgba(255, 215, 0, 0.5);
+    letter-spacing: 1px;
+}
 
 .carousel-text h2 {
     font-size: 3.5vw;
     margin: 0 0 5%;
+    font-weight: 800;
     background: linear-gradient(90deg, #caad11, orange);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -5175,7 +5186,9 @@ gmpx-store-locator {
     /*background: rgba(0, 0, 0, 0.6);*/
     padding: 15px;
     border-radius: 10px;
-    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+    font-weight: 500;
+    line-height: 1.6;
 }
 
 @media screen and (max-width: 768px) {
@@ -5196,6 +5209,19 @@ gmpx-store-locator {
         left: 0;
     }
 
+    /* Add dim overlay to carousel slides for better text visibility */
+    .carousel-slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
+        z-index: 1;
+        pointer-events: none;
+    }
+
     /* Carousel images - must fill entire slide */
     .carousel-slide img {
         width: 100%;
@@ -5204,61 +5230,76 @@ gmpx-store-locator {
         position: absolute;
         top: 0;
         left: 0;
+        filter: brightness(0.85) contrast(1.1);
     }
 
     /* Brand name overlay - top center */
     .carousel-caption-fixed-brand-name {
-        font-size: 1.8rem !important;
-        padding: 12px 20px !important;
-        top: 12% !important;
+        font-size: 2.4rem !important;
+        padding: 15px 25px !important;
+        top: 8% !important;
         width: auto;
-        max-width: 85%;
+        max-width: 90%;
         left: 50% !important;
         transform: translate(-50%, 0) !important;
         white-space: nowrap;
+        background: transparent !important;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 1), 1px 1px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 rgba(0, 0, 0, 0.9), 1px -1px 0 rgba(0, 0, 0, 0.9), -1px 1px 0 rgba(0, 0, 0, 0.9), 1px 1px 0 rgba(0, 0, 0, 0.9);
+        z-index: 10 !important;
+        font-weight: 900 !important;
     }
 
     /* Tag line overlay - below brand name */
     .carousel-caption-fixed-tag-line {
-        font-size: 0.9rem !important;
-        padding: 4px 8px !important;
-        top: 19% !important;
+        font-size: 1rem !important;
+        padding: 6px 12px !important;
+        top: 15% !important;
         width: auto;
-        max-width: 70%;
+        max-width: 80%;
         left: 50% !important;
         transform: translate(-50%, 0) !important;
+        background: rgba(0, 0, 0, 0.6) !important;
+        z-index: 10 !important;
     }
 
     /* Fixed caption text */
     .carousel-caption-fixed {
-        font-size: 1.1rem !important;
-        padding: 12px 18px !important;
-        width: 85%;
-        max-width: 85%;
+        font-size: 1.5rem !important;
+        padding: 15px 20px !important;
+        width: 90%;
+        max-width: 90%;
         white-space: normal;
-        line-height: 1.4 !important;
+        line-height: 1.5 !important;
         left: 50% !important;
         top: 50% !important;
         transform: translate(-50%, -50%) !important;
+        background: transparent !important;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 1), 1px 1px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 rgba(0, 0, 0, 0.9), 1px -1px 0 rgba(0, 0, 0, 0.9), -1px 1px 0 rgba(0, 0, 0, 0.9), 1px 1px 0 rgba(0, 0, 0, 0.9);
+        z-index: 10 !important;
+        font-weight: 700 !important;
     }
 
-    /* Main carousel text content - positioned at bottom */
+    /* Main carousel text content - positioned to cover most area */
     .carousel-text {
         position: absolute !important;
-        bottom: 5% !important;
+        top: 25% !important;
         left: 50% !important;
-        top: auto !important;
+        bottom: auto !important;
         right: auto !important;
         transform: translateX(-50%) !important;
-        width: 90% !important;
-        max-width: 90% !important;
-        padding: 15px !important;
-        background: rgba(0, 0, 0, 0.85) !important;
-        border-radius: 12px;
+        width: 92% !important;
+        max-width: 92% !important;
+        padding: 20px !important;
+        background: transparent !important;
+        border-radius: 0;
         text-align: center !important;
-        font-size: 14px !important;
-        line-height: 1.5 !important;
+        font-size: 15px !important;
+        line-height: 1.6 !important;
         z-index: 10 !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
     }
 
     /* Left-aligned text variant */
@@ -5270,25 +5311,39 @@ gmpx-store-locator {
 
     /* Carousel text headings */
     .carousel-text h1 {
-        font-size: 22px !important;
-        line-height: 1.3 !important;
-        margin-bottom: 8px !important;
+        font-size: 34px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 12px !important;
         margin-top: 0 !important;
+        font-weight: 900 !important;
+        text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 215, 0, 0.3) !important;
+        background: linear-gradient(135deg, #ffd700, #ffed4e, #ff9800) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
     }
 
     .carousel-text h2 {
-        font-size: 18px !important;
+        font-size: 28px !important;
         line-height: 1.3 !important;
-        margin-bottom: 8px !important;
+        margin-bottom: 12px !important;
         margin-top: 0 !important;
+        font-weight: 800 !important;
+        text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 215, 0, 0.3) !important;
+        background: linear-gradient(90deg, #caad11, orange) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
     }
 
     /* Carousel text paragraphs */
     .carousel-text p {
-        font-size: 13px !important;
-        line-height: 1.5 !important;
-        padding: 8px !important;
-        margin: 8px 0 !important;
+        font-size: 17px !important;
+        line-height: 1.6 !important;
+        padding: 0 !important;
+        margin: 12px 0 !important;
+        color: #ffffff !important;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 1), 1px 1px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 rgba(0, 0, 0, 0.8), 1px -1px 0 rgba(0, 0, 0, 0.8), -1px 1px 0 rgba(0, 0, 0, 0.8), 1px 1px 0 rgba(0, 0, 0, 0.8) !important;
+        font-weight: 600 !important;
+        background: transparent !important;
     }
 
     /* Gold buttons in carousel */
@@ -5297,6 +5352,35 @@ gmpx-store-locator {
         font-size: 13px !important;
         margin: 8px auto !important;
         display: inline-block !important;
+    }
+
+    /* Fix overlapping text in last carousel slide (4th slide with Musk & Tusk captions) */
+    .carousel-slide:nth-child(4) .carousel-caption-fixed {
+        font-size: 1.2rem !important;
+        padding: 10px 15px !important;
+        width: auto !important;
+        max-width: 40% !important;
+    }
+
+    /* Position left caption (Smell the Musk) */
+    .carousel-slide:nth-child(4) .carousel-caption-fixed:nth-of-type(1) {
+        left: 50% !important;
+        top: 65% !important;
+        transform: translate(-50%, 0) !important;
+    }
+
+    /* Position right caption (Feel the Tusk) */
+    .carousel-slide:nth-child(4) .carousel-caption-fixed:nth-of-type(2) {
+        left: 50% !important;
+        top: 75% !important;
+        transform: translate(-50%, 0) !important;
+    }
+
+    /* Position button in 4th slide */
+    .carousel-slide:nth-child(4) .gold-button {
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
 }
 
@@ -5718,30 +5802,46 @@ body {
         height: 100% !important;
     }
 
+    .carousel-slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
+        z-index: 1;
+        pointer-events: none;
+    }
+
     .carousel-slide img {
         position: absolute;
         width: 100%;
         height: 100% !important;
         object-fit: cover !important;
+        filter: brightness(0.85) contrast(1.1);
         animation: none; /* Disable animation on mobile for performance */
     }
 
     .carousel-text {
         position: absolute !important;
-        bottom: 3% !important;
+        top: 25% !important;
         left: 50% !important;
-        top: auto !important;
+        bottom: auto !important;
         right: auto !important;
         transform: translateX(-50%) !important;
         width: 92% !important;
         max-width: 92% !important;
-        padding: 12px !important;
-        background: rgba(0, 0, 0, 0.85) !important;
-        border-radius: 10px;
+        padding: 18px !important;
+        background: transparent !important;
+        border-radius: 0;
         text-align: center !important;
-        font-size: 13px !important;
-        line-height: 1.5 !important;
+        font-size: 14px !important;
+        line-height: 1.6 !important;
         z-index: 10 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
     }
 
     .carousel-text-left {
@@ -5751,50 +5851,72 @@ body {
     }
 
     .carousel-text h1 {
-        font-size: 20px !important;
+        font-size: 32px !important;
         line-height: 1.2 !important;
-        margin-bottom: 6px !important;
+        margin-bottom: 10px !important;
         margin-top: 0 !important;
+        font-weight: 900 !important;
+        text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 215, 0, 0.3) !important;
+        background: linear-gradient(135deg, #ffd700, #ffed4e, #ff9800) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
     }
 
     .carousel-text h2 {
-        font-size: 17px !important;
+        font-size: 26px !important;
         line-height: 1.3 !important;
-        margin-bottom: 6px !important;
+        margin-bottom: 10px !important;
         margin-top: 0 !important;
+        font-weight: 800 !important;
+        text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 215, 0, 0.3) !important;
+        background: linear-gradient(90deg, #caad11, orange) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
     }
 
     .carousel-text p {
-        font-size: 12px !important;
-        line-height: 1.5 !important;
-        padding: 6px !important;
-        margin: 6px 0 !important;
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        padding: 0 !important;
+        margin: 10px 0 !important;
+        color: #ffffff !important;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 1), 1px 1px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 rgba(0, 0, 0, 0.8), 1px -1px 0 rgba(0, 0, 0, 0.8), -1px 1px 0 rgba(0, 0, 0, 0.8), 1px 1px 0 rgba(0, 0, 0, 0.8) !important;
+        font-weight: 600 !important;
+        background: transparent !important;
     }
 
     .carousel-caption-fixed-brand-name {
-        font-size: 1.6rem !important;
-        padding: 10px 18px !important;
-        top: 11% !important;
-        max-width: 80%;
+        font-size: 2rem !important;
+        padding: 12px 20px !important;
+        top: 8% !important;
+        max-width: 88%;
         left: 50%;
         transform: translate(-50%, 0) !important;
+        background: transparent !important;
+        text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.9);
+        z-index: 10 !important;
     }
 
     .carousel-caption-fixed-tag-line {
-        font-size: 0.85rem !important;
-        padding: 3px 6px !important;
-        top: 18% !important;
-        max-width: 65%;
+        font-size: 0.95rem !important;
+        padding: 5px 10px !important;
+        top: 15% !important;
+        max-width: 75%;
+        background: rgba(0, 0, 0, 0.6) !important;
+        z-index: 10 !important;
     }
 
     .carousel-caption-fixed {
-        font-size: 1rem !important;
-        padding: 10px 15px !important;
-        max-width: 82%;
+        font-size: 1.2rem !important;
+        padding: 12px 18px !important;
+        max-width: 88%;
         white-space: normal;
         left: 50% !important;
         top: 50% !important;
         transform: translate(-50%, -50%) !important;
+        background: transparent !important;
+        text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.95);
+        z-index: 10 !important;
     }
 
     .gold-button {
@@ -5802,6 +5924,32 @@ body {
         font-size: 13px !important;
         margin: 8px auto !important;
         display: inline-block !important;
+    }
+
+    /* Fix overlapping text in last carousel slide (4th slide) */
+    .carousel-slide:nth-child(4) .carousel-caption-fixed {
+        font-size: 1.1rem !important;
+        padding: 8px 12px !important;
+        width: auto !important;
+        max-width: 40% !important;
+    }
+
+    .carousel-slide:nth-child(4) .carousel-caption-fixed:nth-of-type(1) {
+        left: 50% !important;
+        top: 65% !important;
+        transform: translate(-50%, 0) !important;
+    }
+
+    .carousel-slide:nth-child(4) .carousel-caption-fixed:nth-of-type(2) {
+        left: 50% !important;
+        top: 75% !important;
+        transform: translate(-50%, 0) !important;
+    }
+
+    .carousel-slide:nth-child(4) .gold-button {
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
 
     /* Navigation */
@@ -6037,60 +6185,128 @@ body {
         height: 100% !important;
     }
 
+    .carousel-slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
+        z-index: 1;
+        pointer-events: none;
+    }
+
     .carousel-slide img {
         height: 100% !important;
         object-fit: cover !important;
+        filter: brightness(0.85) contrast(1.1);
     }
 
     .carousel-text {
-        bottom: 2% !important;
+        top: 25% !important;
+        bottom: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
         width: 95% !important;
         max-width: 95% !important;
-        padding: 10px !important;
-        font-size: 11px !important;
-        background: rgba(0, 0, 0, 0.9) !important;
+        padding: 15px !important;
+        font-size: 12px !important;
+        background: transparent !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        z-index: 10 !important;
     }
 
     .carousel-text h1 {
-        font-size: 18px !important;
-        margin-bottom: 5px !important;
+        font-size: 28px !important;
+        margin-bottom: 8px !important;
+        font-weight: 900 !important;
+        text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 215, 0, 0.3) !important;
+        background: linear-gradient(135deg, #ffd700, #ffed4e, #ff9800) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
     }
 
     .carousel-text h2 {
-        font-size: 16px !important;
-        margin-bottom: 5px !important;
+        font-size: 24px !important;
+        margin-bottom: 8px !important;
+        font-weight: 800 !important;
+        text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 215, 0, 0.3) !important;
+        background: linear-gradient(90deg, #caad11, orange) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
     }
 
     .carousel-text p {
-        font-size: 11px !important;
-        padding: 5px !important;
-        margin: 5px 0 !important;
+        font-size: 15px !important;
+        padding: 0 !important;
+        margin: 8px 0 !important;
+        color: #ffffff !important;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 1), 1px 1px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 rgba(0, 0, 0, 0.8), 1px -1px 0 rgba(0, 0, 0, 0.8), -1px 1px 0 rgba(0, 0, 0, 0.8), 1px 1px 0 rgba(0, 0, 0, 0.8) !important;
+        font-weight: 600 !important;
+        background: transparent !important;
     }
 
     .carousel-caption-fixed-brand-name {
-        font-size: 1.3rem !important;
-        padding: 8px 14px !important;
-        max-width: 88%;
-        top: 10% !important;
+        font-size: 1.6rem !important;
+        padding: 10px 18px !important;
+        max-width: 90%;
+        top: 8% !important;
+        background: transparent !important;
+        text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.9);
+        z-index: 10 !important;
     }
 
     .carousel-caption-fixed-tag-line {
-        font-size: 0.7rem !important;
-        padding: 2px 5px !important;
-        max-width: 75%;
-        top: 16% !important;
+        font-size: 0.85rem !important;
+        padding: 4px 8px !important;
+        max-width: 80%;
+        top: 15% !important;
+        background: rgba(0, 0, 0, 0.6) !important;
+        z-index: 10 !important;
     }
 
     .carousel-caption-fixed {
-        font-size: 0.9rem !important;
-        padding: 8px 12px !important;
-        max-width: 88%;
-        line-height: 1.3 !important;
+        font-size: 1.1rem !important;
+        padding: 10px 15px !important;
+        max-width: 90%;
+        line-height: 1.4 !important;
+        background: transparent !important;
+        text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.95);
+        z-index: 10 !important;
     }
 
     .gold-button {
         padding: 8px 15px !important;
         font-size: 12px !important;
+    }
+
+    /* Fix overlapping text in last carousel slide (4th slide) */
+    .carousel-slide:nth-child(4) .carousel-caption-fixed {
+        font-size: 1rem !important;
+        padding: 8px 12px !important;
+        width: auto !important;
+        max-width: 38% !important;
+    }
+
+    .carousel-slide:nth-child(4) .carousel-caption-fixed:nth-of-type(1) {
+        left: 50% !important;
+        top: 65% !important;
+        transform: translate(-50%, 0) !important;
+    }
+
+    .carousel-slide:nth-child(4) .carousel-caption-fixed:nth-of-type(2) {
+        left: 50% !important;
+        top: 75% !important;
+        transform: translate(-50%, 0) !important;
+    }
+
+    .carousel-slide:nth-child(4) .gold-button {
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
 
     /* Services */
@@ -6279,51 +6495,122 @@ body {
         height: 100% !important;
     }
 
+    .carousel-slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
+        z-index: 1;
+        pointer-events: none;
+    }
+
     .carousel-slide img {
         height: 100% !important;
+        filter: brightness(0.85) contrast(1.1);
     }
 
     .carousel-text {
-        bottom: 1% !important;
+        top: 25% !important;
+        bottom: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
         width: 96% !important;
-        padding: 8px !important;
-        font-size: 10px !important;
+        padding: 12px !important;
+        font-size: 11px !important;
+        background: transparent !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        z-index: 10 !important;
     }
 
     .carousel-text h1 {
-        font-size: 16px !important;
+        font-size: 26px !important;
+        font-weight: 900 !important;
+        text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 215, 0, 0.3) !important;
+        background: linear-gradient(135deg, #ffd700, #ffed4e, #ff9800) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
     }
 
     .carousel-text h2 {
-        font-size: 14px !important;
+        font-size: 22px !important;
+        font-weight: 800 !important;
+        text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 215, 0, 0.3) !important;
+        background: linear-gradient(90deg, #caad11, orange) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
     }
 
     .carousel-text p {
-        font-size: 10px !important;
-        line-height: 1.4 !important;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        color: #ffffff !important;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 1), 1px 1px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 rgba(0, 0, 0, 0.8), 1px -1px 0 rgba(0, 0, 0, 0.8), -1px 1px 0 rgba(0, 0, 0, 0.8), 1px 1px 0 rgba(0, 0, 0, 0.8) !important;
+        font-weight: 600 !important;
+        background: transparent !important;
     }
 
     .carousel-caption-fixed-brand-name {
-        font-size: 1.1rem !important;
-        padding: 6px 10px !important;
-        max-width: 90%;
+        font-size: 1.4rem !important;
+        padding: 8px 14px !important;
+        max-width: 92%;
+        top: 8% !important;
+        background: transparent !important;
+        text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.9);
+        z-index: 10 !important;
     }
 
     .carousel-caption-fixed-tag-line {
-        font-size: 0.6rem !important;
-        padding: 2px 4px !important;
-        max-width: 80%;
+        font-size: 0.75rem !important;
+        padding: 3px 6px !important;
+        max-width: 82%;
+        top: 15% !important;
+        background: rgba(0, 0, 0, 0.6) !important;
+        z-index: 10 !important;
     }
 
     .carousel-caption-fixed {
-        font-size: 0.8rem !important;
-        padding: 6px 10px !important;
-        max-width: 90%;
+        font-size: 1rem !important;
+        padding: 8px 12px !important;
+        max-width: 92%;
+        background: transparent !important;
+        text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.95);
+        z-index: 10 !important;
     }
 
     .gold-button {
         padding: 6px 12px !important;
         font-size: 11px !important;
+    }
+
+    /* Fix overlapping text in last carousel slide (4th slide) */
+    .carousel-slide:nth-child(4) .carousel-caption-fixed {
+        font-size: 0.9rem !important;
+        padding: 6px 10px !important;
+        width: auto !important;
+        max-width: 35% !important;
+    }
+
+    .carousel-slide:nth-child(4) .carousel-caption-fixed:nth-of-type(1) {
+        left: 50% !important;
+        top: 65% !important;
+        transform: translate(-50%, 0) !important;
+    }
+
+    .carousel-slide:nth-child(4) .carousel-caption-fixed:nth-of-type(2) {
+        left: 50% !important;
+        top: 75% !important;
+        transform: translate(-50%, 0) !important;
+    }
+
+    .carousel-slide:nth-child(4) .gold-button {
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
 
     /* Franchise cards */
