@@ -188,11 +188,13 @@
 </div>
 
 <div id="servicesModel" class="services-modal" onclick="closeModal(event)">
-    <span class="close-btn" onclick="closeModal(event)">&times;</span>
+    <div class="services-modal-content" onclick="event.stopPropagation()">
+        <span class="close-btn" onclick="closeModal(event)">&times;</span>
+        <img id="modalImage" src="" alt="Service Image" />
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+    </div>
     <span class="nav-btn prev" onclick="changeImage(-1)">&#10094;</span>
-    <img id="modalImage" src="" alt="Enlarged" />
-    <h2 id="modalTitle"></h2>
-    <p id="modalDescription"></p>
     <span class="nav-btn next" onclick="changeImage(1)">&#10095;</span>
 </div>
 <div class="services_spacer"></div>
@@ -828,15 +830,25 @@
 
     function openModal(index) {
         currentIndex = index;
+        const modal = document.getElementById("servicesModel");
         modalImage.src = services[currentIndex].image;
         modalTitle.textContent = services[currentIndex].title;
         modalDescription.textContent = services[currentIndex].description;
-        document.getElementById("servicesModel").style.display = 'flex';
+        modal.style.display = 'flex';
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
 
     function closeModal(event) {
-        if (event.target.classList.contains("modal") || event.target.classList.contains("close-btn")) {
-            document.getElementById("servicesModel").style.display = 'none';
+        if (event.target.classList.contains("services-modal") || event.target.classList.contains("close-btn")) {
+            const modal = document.getElementById("servicesModel");
+            modal.style.animation = 'fadeOut 0.3s ease forwards';
+            setTimeout(() => {
+                modal.style.display = 'none';
+                modal.style.animation = '';
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }, 300);
         }
     }
 
@@ -1028,10 +1040,10 @@
                 });
 
                 if (res.status === 200) {
-                    document.getElementById('franchise-enquiry-formContainer').innerHTML = `
+                    document.getElementById('franchise-enquiry-formContent').innerHTML = `
           <div class="franchise-enquiry-success-message">
-            <p>Thank you! Your enquiry has been submitted successfully.</p>
-            <button class="franchise-enquiry-close-btn" onclick="closeForm()">Close</button>
+            <p>Thank you for your interest! We'll get back to you soon.</p>
+            <button onclick="closeForm()">Close</button>
           </div>`;
                 } else {
                     errorBox.textContent = "Something went wrong. Please try again later.";

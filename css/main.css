@@ -4742,7 +4742,6 @@ gmpx-store-locator {
 }
 
 .services-modal {
-    max-width: 100%;
     display: none;
     position: fixed;
     z-index: 1000;
@@ -4750,77 +4749,184 @@ gmpx-store-locator {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.95);
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    padding: 2rem;
+    padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.services-modal.active {
+    display: flex !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.services-modal-content {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.98), rgba(40, 40, 40, 0.98));
+    border: 2px solid #FFD700;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 50px rgba(255, 215, 0, 0.3);
+    position: relative;
+    animation: slideUp 0.4s ease forwards;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.services-modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.services-modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.services-modal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-radius: 10px;
 }
 
 .services-modal img {
-    max-width: 90%;
-    max-height: 70%;
-    border: 5px solid #d4af37;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid #FFD700;
+    box-shadow: 0 5px 25px rgba(255, 215, 0, 0.4);
+    animation: scaleIn 0.5s ease 0.2s backwards;
 }
 
 @media (max-width: 768px) {
     .services-modal {
-        padding: 1rem;
+        padding: 15px;
+    }
+
+    .services-modal-content {
+        padding: 30px 20px;
+        width: 95%;
+        gap: 20px;
     }
 
     .services-modal img {
-        max-width: 85%;
-        max-height: 50%;
-        border-width: 3px;
+        max-height: 300px;
     }
 
-    .services-modal h2 {
+    #modalTitle {
+        font-size: 2rem;
+    }
+
+    #modalDescription {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .close-btn {
+        width: 40px;
+        height: 40px;
         font-size: 24px;
-        margin: 10px 0;
+        top: 10px;
+        right: 10px;
     }
 
-    .services-modal p {
-        font-size: 16px;
-        line-height: 1.4;
-        margin: 10px 0;
+    .nav-btn {
+        font-size: 28px;
+        padding: 12px 15px;
     }
 
-    .close-btn, .nav-btn {
-        font-size: 24px;
-        padding: 5px 10px;
-    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
 }
 
 @media (max-width: 480px) {
     .services-modal {
-        padding: 0.5rem;
+        padding: 10px;
+    }
+
+    .services-modal-content {
+        padding: 25px 15px;
+        width: 98%;
+        gap: 15px;
+        border-width: 1px;
     }
 
     .services-modal img {
-        max-width: 90%;
-        max-height: 40%;
+        max-height: 250px;
         border-width: 2px;
     }
 
-    .services-modal h2 {
-        font-size: 20px;
-        margin: 8px 0;
+    #modalTitle {
+        font-size: 1.6rem;
     }
 
-    .services-modal p {
-        font-size: 14px;
-        line-height: 1.3;
-        margin: 8px 0;
+    #modalDescription {
+        font-size: 0.95rem;
+        line-height: 1.5;
     }
 
-    .close-btn, .nav-btn {
+    .close-btn {
+        width: 35px;
+        height: 35px;
         font-size: 20px;
-        padding: 3px 8px;
+        top: 8px;
+        right: 8px;
     }
+
+    .nav-btn {
+        font-size: 24px;
+        padding: 10px 12px;
+    }
+
+    .prev { left: 5px; }
+    .next { right: 5px; }
 }
 
 .gallery-modal {
@@ -4848,37 +4954,75 @@ gmpx-store-locator {
 }
 
 #modalTitle {
-    color: #fff;
-    margin: 1rem 0 0.5rem;
-    font-size: 2rem;
+    font-family: 'Cinzel Decorative', serif;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    font-size: 2.5rem;
     text-align: center;
+    font-weight: 700;
+    animation: slideUp 0.5s ease 0.3s backwards;
 }
 
 #modalDescription {
-    color: #ccc;
-    max-width: 90%;
-    font-size: 1.2rem;
+    color: #E0E0E0;
+    font-size: 1.15rem;
     text-align: center;
+    line-height: 1.8;
+    font-family: 'Sora', sans-serif;
+    animation: slideUp 0.5s ease 0.4s backwards;
 }
 
 .close-btn {
     position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 30px;
-    color: #fff;
+    top: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    font-size: 28px;
+    color: #FFD700;
     cursor: pointer;
     font-family: Arial, sans-serif;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #FFD700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.close-btn:hover {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    transform: rotate(90deg);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
 }
 
 .nav-btn {
     position: absolute;
     top: 50%;
-    font-size: 40px;
-    color: #fff;
+    transform: translateY(-50%);
+    font-size: 35px;
+    color: #FFD700;
     cursor: pointer;
     user-select: none;
-    padding: 10px;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #FFD700;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.nav-btn:hover {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    transform: translateY(-50%) scale(1.1);
 }
 
 .prev { left: 20px; }
@@ -5006,24 +5150,18 @@ gmpx-store-locator {
     font-size: 28px;
     float: right;
     cursor: pointer;
-    position: sticky;
-    top: 10px;
-    z-index: 10;
 }
 
 .franchise_sidebar_content {
     /*margin-top: 60px;*/
     font-size: calc(12px + 1vw);
     line-height: 1.6;
-    text-align: left;
-    padding: 10px;
 }
 
 .franchise_sidebar_title {
     font-size: calc(24px + 1vw);
-    line-height: 1.4;
+    line-height: 8vw;
     color: #FFD700;
-    margin-bottom: 20px;
 }
 
 /* Franchise Pop up*/
@@ -5151,7 +5289,7 @@ gmpx-store-locator {
     top: 16%;
     left: 50%;
     transform: translate(-50%, 0);
-    font-family: 'Cinzel Decorative', serif;
+    font-family: 'Cinzel Decorative Black', serif;
     color: #ffffff;
     background: rgba(0, 0, 0, 0.5);
     padding: 25px 35px;
@@ -5667,7 +5805,6 @@ gmpx-store-locator {
     }
 }
 
-/* Franchise Enquiry Form */
 .franchise-enquiry-overlay {
     position: fixed;
     top: 0;
@@ -5678,7 +5815,7 @@ gmpx-store-locator {
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 10000;
     opacity: 0;
     transition: opacity 0.4s ease;
 }
@@ -5696,24 +5833,29 @@ gmpx-store-locator {
     border-radius: 12px;
     max-width: 400px;
     width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
     transform: scale(0.9);
     transition: transform 0.4s ease;
+    box-sizing: border-box;
 }
 
 .franchise-enquiry-overlay.show .franchise-enquiry-enquiry-form {
     transform: scale(1);
 }
 
-input, textarea {
+#franchise-enquiry-formContent input,
+#franchise-enquiry-formContent textarea {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border-radius: 6px;
     border: none;
     font-size: 14px;
+    box-sizing: border-box;
 }
 
-button {
+#franchise-enquiry-formContent button {
     padding: 10px 20px;
     background: gold;
     color: black;
@@ -5723,7 +5865,7 @@ button {
     transition: all 0.3s ease;
 }
 
-button:hover {
+#franchise-enquiry-formContent button:hover {
     background: black;
     color: gold;
     border: 1px solid gold;
@@ -5751,6 +5893,33 @@ button:hover {
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
     to   { opacity: 1; transform: scale(1); }
+}
+
+/* Franchise Form Mobile Responsive */
+@media (max-width: 768px) {
+    .franchise-enquiry-enquiry-form {
+        width: 85%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .franchise-enquiry-enquiry-form {
+        width: 90%;
+        max-width: 320px;
+        padding: 18px;
+    }
+
+    #franchise-enquiry-formContent input,
+    #franchise-enquiry-formContent textarea {
+        font-size: 13px;
+        padding: 9px;
+    }
+
+    #franchise-enquiry-formContent button {
+        padding: 9px 18px;
+        font-size: 13px;
+    }
 }
 
 /* ===== COMPREHENSIVE MOBILE RESPONSIVENESS FIXES ===== */
@@ -6133,22 +6302,6 @@ body {
         margin-bottom: 20px;
     }
 
-    .franchise_sidebar {
-        width: 90vw;
-        max-width: 90vw;
-        padding: 20px 15px;
-    }
-
-    .franchise_sidebar_title {
-        font-size: 22px;
-        line-height: 1.3;
-        margin-bottom: 15px;
-    }
-
-    .franchise_sidebar_content {
-        font-size: 15px;
-        line-height: 1.6;
-    }
 
     .franchise-icon-container {
         flex-direction: column;
@@ -6480,20 +6633,6 @@ body {
         height: 200px;
     }
 
-    .franchise_sidebar {
-        width: 95vw;
-        max-width: 95vw;
-        padding: 15px 10px;
-    }
-
-    .franchise_sidebar_title {
-        font-size: 20px;
-        line-height: 1.3;
-    }
-
-    .franchise_sidebar_content {
-        font-size: 14px;
-    }
 
     .team-member-wrapper {
         width: 100%;
@@ -6727,18 +6866,6 @@ body {
         height: 180px;
     }
 
-    .franchise_sidebar {
-        width: 98vw;
-        max-width: 98vw;
-    }
-
-    .franchise_sidebar_title {
-        font-size: 18px;
-    }
-
-    .franchise_sidebar_content {
-        font-size: 13px;
-    }
 
     /* Services */
     .services-circle {
