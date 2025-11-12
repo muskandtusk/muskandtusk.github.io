@@ -5105,10 +5105,14 @@ gmpx-store-locator {
 
 .franchise_overlay {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.6);
-    z-index: 998;
+    z-index: 9998;
     display: none;
 }
 
@@ -5118,20 +5122,23 @@ gmpx-store-locator {
 
 .franchise_sidebar {
     position: fixed;
-    top: 0; right: -100%;
+    top: 0;
+    right: -100%;
+    bottom: 0;
     width: 80vw;
     max-width: 90vw;
-    height: 100%;
+    height: 100vh;
     background: radial-gradient(circle at top left, #333, #111);
     color: white;
     padding: 30px 25px;
     box-shadow: -4px 0 25px rgba(255, 215, 0, 0.4);
     text-align: center;
     transition: right 0.4s ease;
-    z-index: 1000;
+    z-index: 9999;
     border-left: 3px solid #FFD700;
     overflow-y: auto;
     overflow-x: hidden;
+    transform: translateZ(0);
 }
 
 .franchise_sidebar.open {

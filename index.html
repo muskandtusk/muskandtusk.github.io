@@ -290,10 +290,10 @@
         <div class="franchise-flip-container">
             <div class="franchise-flipper">
                 <div class="franchise-front">
-                    <img src="images/card/musk_and_tusk_card.png" onclick="showFranchiseSidebar(2)" alt="image_03"/>
+                    <img src="images/card/musk_and_tusk_card.png" onclick="showFranchiseSidebar(4)" alt="image_03"/>
                 </div>
                 <div class="franchise-back">
-                    <img src="images/card/musk_and_tusk_support.png" onclick="showFranchiseSidebar(2)" alt="image_03"/>
+                    <img src="images/card/musk_and_tusk_support.png" onclick="showFranchiseSidebar(4)" alt="image_03"/>
                 </div>
             </div>
         </div>
@@ -301,10 +301,10 @@
         <div class="franchise-flip-container">
             <div class="franchise-flipper">
                 <div class="franchise-front">
-                    <img src="images/card/musk_and_tusk_card.png" onclick="showFranchiseSidebar(3)" alt="image_04"/>
+                    <img src="images/card/musk_and_tusk_card.png" onclick="showFranchiseSidebar(2)" alt="image_04"/>
                 </div>
                 <div class="franchise-back">
-                    <img src="images/card/musk_and_tusk_royalty.png" onclick="showFranchiseSidebar(3)" alt="image_04"/>
+                    <img src="images/card/musk_and_tusk_royalty.png" onclick="showFranchiseSidebar(2)" alt="image_04"/>
                 </div>
             </div>
         </div>
@@ -312,10 +312,10 @@
         <div class="franchise-flip-container">
             <div class="franchise-flipper">
                 <div class="franchise-front">
-                    <img src="images/card/musk_and_tusk_card.png" onclick="showFranchiseSidebar(4)" alt="image_05"/>
+                    <img src="images/card/musk_and_tusk_card.png" onclick="showFranchiseSidebar(3)" alt="image_05"/>
                 </div>
                 <div class="franchise-back">
-                    <img src="images/card/musk_and_tusk_processes.png" onclick="showFranchiseSidebar(4)" alt="image_05"/>
+                    <img src="images/card/musk_and_tusk_processes.png" onclick="showFranchiseSidebar(3)" alt="image_05"/>
                 </div>
             </div>
         </div>
@@ -339,14 +339,6 @@
     </div>
 </div>
 
-<div class="franchise_overlay" id="franchise_overlay" onclick="closeFranchiseSidebar()"></div>
-
-<div class="franchise_sidebar" id="franchise_sidebar">
-    <button class="franchise_close-btn" onclick="closeFranchiseSidebar()">&times;</button>
-    <img src="images/logo.png" class="image">
-    <h2 class="franchise_sidebar_title" id="franchise_sidebar_title"></h2>
-    <div class="franchise_sidebar_content" id="franchise_sidebar_content"></div>
-</div>
 <div class="services_spacer"></div>
 <div class="franchise-icon-container">
     <div class="franchise-icon-block">
@@ -892,12 +884,6 @@
     </script>
 <!-- Franchise -->
 <script>
-
-    const sidebar = document.getElementById("franchise_sidebar");
-    const overlay = document.getElementById("franchise_overlay");
-    const sidebar_title = document.getElementById("franchise_sidebar_title")
-    const sidebar_description = document.getElementById("franchise_sidebar_content")
-
     const franchise_slidebar = [
         {
             title: "Your Success, Our Unwavering Commitment",
@@ -909,7 +895,7 @@
         },
         {
             title: "Maximizing Your Bottom Line",
-            description: "We believe in true partnership, and that means ensuring your hard work translates into maximum returns. Our competitive royalty structure is designed to empower you, allowing you to retain more of your hard-earned revenue. We've balanced robust brand support with a fair financial model, ensuring that you benefit significantly from the MUSK & TUSK brand power without excessive overhead. It’s a win-win approach that prioritizes your profitability and long-term financial health."
+            description: "We believe in true partnership, and that means ensuring your hard work translates into maximum returns. Our competitive royalty structure is designed to empower you, allowing you to retain more of your hard-earned revenue. We've balanced robust brand support with a fair financial model, ensuring that you benefit significantly from the MUSK & TUSK brand power without excessive overhead. It's a win-win approach that prioritizes your profitability and long-term financial health."
         },
         {
             title: "Effortless Excellence",
@@ -921,9 +907,12 @@
         },
     ];
 
-    let activeHex = null;
-
     function showFranchiseSidebar(index) {
+        const sidebar = document.getElementById("franchise_sidebar");
+        const overlay = document.getElementById("franchise_overlay");
+        const sidebar_title = document.getElementById("franchise_sidebar_title");
+        const sidebar_description = document.getElementById("franchise_sidebar_content");
+
         sidebar_title.innerHTML = franchise_slidebar[index].title;
         sidebar_description.innerHTML = franchise_slidebar[index].description;
 
@@ -934,11 +923,15 @@
     }
 
     function closeFranchiseSidebar() {
+        const sidebar = document.getElementById("franchise_sidebar");
+        const overlay = document.getElementById("franchise_overlay");
+
         sidebar.classList.remove("open");
         overlay.classList.remove("active");
     }
 
     function closeFranchiseSidebarOnScroll() {
+        const sidebar = document.getElementById("franchise_sidebar");
         if (sidebar.classList.contains("open")) {
             closeFranchiseSidebar();
         }
@@ -1054,5 +1047,16 @@
         }
     </script>
 <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+
+<!-- Franchise Sidebar and Overlay - Placed at body level to avoid transform parent issues -->
+<div class="franchise_overlay" id="franchise_overlay" onclick="closeFranchiseSidebar()"></div>
+
+<div class="franchise_sidebar" id="franchise_sidebar">
+    <button class="franchise_close-btn" onclick="closeFranchiseSidebar()">&times;</button>
+    <img src="images/logo.png" class="image">
+    <h2 class="franchise_sidebar_title" id="franchise_sidebar_title"></h2>
+    <div class="franchise_sidebar_content" id="franchise_sidebar_content"></div>
+</div>
+
 </body>
 </html>
