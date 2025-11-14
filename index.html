@@ -874,7 +874,17 @@
 <script>
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
-            document.getElementById("servicesModel").style.display = "none";
+            const modal = document.getElementById("servicesModel");
+            // Check if modal is currently open
+            if (modal && modal.classList.contains('active')) {
+                modal.style.animation = 'fadeOut 0.3s ease forwards';
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    modal.style.animation = '';
+                    modal.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }, 300);
+            }
         } else if (event.key === 'ArrowLeft') {
             changeImage(-1);
             changeGalleryImage(-1);
