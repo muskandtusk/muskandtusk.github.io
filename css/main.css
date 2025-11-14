@@ -3888,7 +3888,7 @@ html.w-mod-js [data-ix=fade-up-3] {
     }
 
     .logo-on-dark {
-        height: 140px
+        height: 100px
     }
 
     .full-section {
@@ -5995,6 +5995,13 @@ body {
     /* Ensure page loader works */
     .page-loader {
         display: block !important;
+    }
+
+    /* Fix brand name text overlapping on tablet */
+    .carousel-caption-fixed-brand-name {
+        font-size: 2.8rem !important;
+        padding: 12px 20px !important;
+        letter-spacing: 0.05em !important;
     }
 }
 
