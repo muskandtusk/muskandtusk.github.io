@@ -1048,6 +1048,106 @@
             }
         }
     </script>
+
+    <script>
+        // Auto-flip franchise cards on scroll for mobile and tablet
+        (function() {
+            // Only apply on mobile and tablet (max-width: 991px)
+            function isMobileOrTablet() {
+                return window.innerWidth <= 991;
+            }
+
+            // Get all franchise flip containers
+            const flipContainers = document.querySelectorAll('.franchise-flip-container');
+
+            if (flipContainers.length === 0) return;
+
+            // Track currently flipped card
+            let currentlyFlipped = null;
+
+            function checkCardPosition() {
+                // Only run on mobile/tablet
+                if (!isMobileOrTablet()) {
+                    // Remove all flipped states on desktop
+                    flipContainers.forEach(container => {
+                        const flipper = container.querySelector('.franchise-flipper');
+                        if (flipper) flipper.classList.remove('flipped');
+                    });
+                    currentlyFlipped = null;
+                    return;
+                }
+
+                const viewportCenter = window.innerHeight / 2;
+                let closestCard = null;
+                let closestDistance = Infinity;
+
+                // Find which card is closest to center
+                flipContainers.forEach((container, index) => {
+                    const rect = container.getBoundingClientRect();
+                    const cardCenter = rect.top + rect.height / 2;
+                    const distanceFromCenter = Math.abs(cardCenter - viewportCenter);
+
+                    // Only consider cards that are at least partially visible
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        if (distanceFromCenter < closestDistance) {
+                            closestDistance = distanceFromCenter;
+                            closestCard = { container, index, distance: distanceFromCenter };
+                        }
+                    }
+                });
+
+                // Only flip if card is reasonably centered (within 30% of viewport height)
+                const threshold = window.innerHeight * 0.3;
+
+                if (closestCard && closestCard.distance < threshold) {
+                    const flipper = closestCard.container.querySelector('.franchise-flipper');
+
+                    // Only update if it's a different card
+                    if (currentlyFlipped !== closestCard.index) {
+                        // Unflip previous card
+                        if (currentlyFlipped !== null && flipContainers[currentlyFlipped]) {
+                            const prevFlipper = flipContainers[currentlyFlipped].querySelector('.franchise-flipper');
+                            if (prevFlipper) prevFlipper.classList.remove('flipped');
+                        }
+
+                        // Flip new card
+                        if (flipper) flipper.classList.add('flipped');
+                        currentlyFlipped = closestCard.index;
+                    }
+                } else {
+                    // No card is centered enough, unflip all
+                    if (currentlyFlipped !== null && flipContainers[currentlyFlipped]) {
+                        const prevFlipper = flipContainers[currentlyFlipped].querySelector('.franchise-flipper');
+                        if (prevFlipper) prevFlipper.classList.remove('flipped');
+                        currentlyFlipped = null;
+                    }
+                }
+            }
+
+            // Throttle function to improve performance
+            let throttleTimer;
+            function throttle(callback, delay) {
+                if (throttleTimer) return;
+                throttleTimer = setTimeout(() => {
+                    callback();
+                    throttleTimer = null;
+                }, delay);
+            }
+
+            // Add scroll listener
+            window.addEventListener('scroll', () => {
+                throttle(checkCardPosition, 50);
+            });
+
+            // Check on resize to handle orientation changes
+            window.addEventListener('resize', () => {
+                checkCardPosition();
+            });
+
+            // Initial check on page load
+            setTimeout(checkCardPosition, 500);
+        })();
+    </script>
 <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 
 <!-- Franchise Sidebar and Overlay - Placed at body level to avoid transform parent issues -->

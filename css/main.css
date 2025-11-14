@@ -5732,7 +5732,7 @@ gmpx-store-locator {
     min-width: 120px;
     height: 280px;
     cursor: pointer;
-    -webkit-tap-highlight-color: rgba(255, 215, 0, 0.3);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .franchise-flipper {
@@ -5745,10 +5745,6 @@ gmpx-store-locator {
 
 .franchise-flip-container:hover .franchise-flipper {
     transform: rotateY(180deg);
-}
-
-.franchise-flip-container:active .franchise-flipper {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
 }
 
 .franchise-front, .franchise-back {
@@ -6002,6 +5998,23 @@ body {
         font-size: 2.8rem !important;
         padding: 12px 20px !important;
         letter-spacing: 0.05em !important;
+    }
+
+    /* Disable hover flip on tablet */
+    .franchise-flip-container:hover .franchise-flipper {
+        transform: none;
+    }
+
+    /* Enable scroll-based flip for franchise cards */
+    .franchise-flipper.flipped {
+        transform: rotateY(180deg) !important;
+    }
+
+    /* Make franchise section scrollable on tablet */
+    .franchise-image-row {
+        height: auto;
+        min-height: 300px;
+        padding: 30px 10px;
     }
 }
 
@@ -6727,7 +6740,7 @@ body {
 
     /* Enable tap-to-flip for franchise cards */
     .franchise-flipper.flipped {
-        transform: rotateY(180deg);
+        transform: rotateY(180deg) !important;
     }
 }
 
